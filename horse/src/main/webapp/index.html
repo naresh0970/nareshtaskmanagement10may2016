@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="studentApp">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="css.css">
+
+<script src="jquery.min.js"></script>
+<script src="bootstrap.min.js"></script>
+<script src="angular.min.js"></script>
+<script src="angular-route.js"></script>
+<script src="app.js"></script>
+<script src="script.js"></script>
+</head>
+<body>
+	
+<div style="width:40%;margin-left:50px" ng-controller="ctrl">
+	<h3>Register</h3>
+<test object="[{name:'first',type:'text',label:'firstname',elementclass:'form-control',model:'firstName',id:'first'},
+{name:'lastname',type:'text',label:'lastname',elementclass:'form-control',model:'lastName'},
+{name:'Email',type:'email',label:'Enter email',elementclass:'form-control',model:'email'},
+{name:'password',type:'password',label:'password',elementclass:'form-control',model:'password'}
+]" src="" button="{type:'submit',value:'submit',submit:'submit',buttonClass:'btn'}"></test>
+<hr>
+<h2>Parent controller</h2>
+<hr>
+{{form}}
+</div>
+	<div class="ng-view"></div>
+
+</body>
+</html>
