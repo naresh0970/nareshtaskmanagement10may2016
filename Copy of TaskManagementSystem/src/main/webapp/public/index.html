@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="taskApp">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Home</title>
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<link rel="stylesheet" href="ng-tags-input.min.css" />
+	<link href="simple-sidebar.css" rel="stylesheet">
+	<link href="angular-notity.css" rel="stylesheet">
+	<link rel="stylesheet" href="css.css">
+	
+
+	<script src="jquery.min.js"></script>
+	<script src="angular.min.js"></script>
+	<script src="angular-route.js"></script>
+	<script src="ui-bootstrap-tpls-1.2.1.min.js"></script>
+	<sript src="angular-animate.js"></script>
+	  <script src="ng-tags-input.min.js"></script>
+	 <script src="bootstrap.min.js"></script>
+	 <script src="notify.js"></script>
+	  <script src="app.js"></script>
+	
+	
+</head>
+
+<body> 
+<div ng-controller="mainController">
+	
+<div class="nav-header"  ng-show="authenticated">
+		<div class="collapse navbar-collapse">
+			<h4>Task Management System</h4>
+	
+	
+		</div>
+	</div>
+
+		 <div id="sidebar-wrapper" ng-show="authenticated">
+            <ul class="sidebar-nav">
+              
+               
+               <li ng-class="{ active: isActive('/currentUserTask') }">  <a href="#/currentUserTask"><span class="glyphicon glyphicon-tasks glyphicon" ></span> MyTask</a></li>
+                <li ng-class="{ active: isActive('/task') }"><a href="#/task"><span class="glyphicon glyphicon-tasks glyphicon"></span> AllTask</a></li>              
+                <li ng-class="{ active: isActive('/users') }"><a href="#/users" ><span class="glyphicon glyphicon-user glyphicon" ></span>People</a></li>
+                <li ng-class="{ active: isActive('/addTask') }"><a href="#/addTask"> <span class="glyphicon glyphicon-pencil glyphicon"></span>  Create Task</a></li>
+                <li ng-class="{ active: isActive('/admin') }"><a href="#/admin"><span class="glyphicon glyphicon-user glyphicon"></span> Admin</a></li>
+                <li> <a ng-click="logout()" style="cursor:pointer"><span class="glyphicon glyphicon-off glyphicon"></span> Logout</a></li>  
+                 </ul>  
+              
+        </div>
+
+</div>
+	
+	<div class="ng-view">
+		
+	</div>
+
+</body>
+
+</html>

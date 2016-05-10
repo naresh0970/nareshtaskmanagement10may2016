@@ -1,0 +1,92 @@
+<div ng-controller="createTask">
+	<div class="body">
+		<h3 class="h3">Create Task</h3>
+		<form class="form-inline">
+
+			<div class="form-group" style="margin-left:55px">
+				<div class="sronly" for="exampleInputPassword3">Title</div>
+				<input type="text" class="formcontrol" placeholder="title" ng-model="task.title">
+			</div>
+			<div class="form-group" style="margin-left:55px">
+				<div class="sronly" for="exampleInputPassword3">Asignee</div>
+				<input type="text" ng-model="task.asignee" placeholder="start typing" uib-typeahead="user as user.name for user in userData | filter:{name:$viewValue}"
+				class="formcontrol" typeahead-show-hint="false" typeahead-min-length="1" ng-keyup="loadUsers($event)">
+			</div>
+			<div class="form-group" style="margin-left:55px">
+				<div class="sronly" for="exampleInputPassword3">Date</div>
+				<input type="date" class="formcontrol" ng-model="task.date">
+			</div>
+
+		</form>
+		<form class="form-inline">
+
+			<div class="form-group" style="margin-left:55px">
+				<div class="sronly" for="exampleInputPassword3">module</div>
+				<select ng-model="task.module" ng-options="module as module.moduleName for module in modules"  class="selectbox" style="width:210px">
+				</select>
+			</div>
+			<div class="form-group" style="margin-left:42px">
+				<div class="sronly" for="exampleInputPassword3">Status</div>
+				<select ng-model="task.status" ng-options="s as s for s in status" class="selectbox">
+
+				</select>
+			</div>
+			<div class="form-group" style="margin-left: 55px;">
+				<div class="sronly">Project</div>
+				<select ng-model="tas.project" ng-options="project as project for project in projects" class="selectbox"> </select>
+					
+					
+			</div>
+
+		</form>
+		<form class="form-inline">
+
+			<div class="form-group" style="margin-left:55px">
+				<div class="sronly" for="exampleInputPassword3">Type</div>
+				<select ng-model="task.type" ng-options="type as type for type in types"  class="selectbox" style="width:100%">
+				</select>
+			</div>
+			
+			<div class="form-group" style="width:44%;">
+				<div class="sronly" style="margin-left: 107px;">AddTags</div>
+				<tags-input name="tags" ng-model="task.tag" display-property="tagName" add-on-blur="false" add-from-autocomplete-only="false"
+				min-tags="2" max-tags="15" allow-leftover-text="false" add-on-paste="true" placeholder="Add Tags">
+					<auto-complete source="loadTags($query)"></auto-complete>
+				</tags-input>
+				
+				
+			</div>
+			
+		</form>
+			<form class="form-inline">
+			<div class="form-group" style=" margin-left: 89px;">
+			
+           
+                <input type="file" name="files[]" id="uploadfile">
+             
+              
+           
+			</div>
+
+			<div class="form-group" style="width:45%">
+				<div class="sronly"style="margin-left:8px" >Description</div>
+				
+				<textarea placeholder="enter your massage here" class="form-control" ng-model="task.description" style=" width: 98%;
+    margin-left: 8px;"></textarea>
+			</div>
+			
+		</form>
+
+		<div class="footer">
+			<div style="float:right; padding-top: 18px;">
+				<button type="button" class="btn btn-default" ng-click="reset()" id="resetbtn">Reset</button>
+				<button type="button" class="btn btn-primary" ng-click="addTask()" id="savebtn">Save</button>
+			</div>
+		</div>
+
+
+
+
+
+	</div>
+</div>

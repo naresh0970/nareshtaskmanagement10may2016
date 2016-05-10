@@ -1,0 +1,58 @@
+<div ng-controller="loginController">
+	
+	<div id="form" ng-hide="authenticated">
+
+
+		<h4 ng-show="showField">{{loginHeading}}</h4>
+		<h4 ng-show="!showField"> {{registerHeading}}</h4>
+
+		<img src="user_icon.png">
+
+		<div class="inputForm">
+
+			<form>
+				<div class="form-group" ng-show="!showField">
+					<input type="text" class="form-control" placeholder="UserId" ng-model="users.userId">
+
+				</div>
+
+				<div class="form-group" ng-show="!showField">
+					<input type="text" class="form-control" placeholder="Name" ng-model="users.name">
+
+				</div>
+
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="UserName" ng-model="users.username">
+
+				</div>
+				<div class="form-group">
+					<input type="password" class="form-control" placeholder="Password" ng-model="users.password">
+
+				</div>
+				<div class="form-group" ng-show="!showField">
+					<input type="file" class="form-control"  id="imagefile">
+					<button type="button" class="btn btn-primary" ng-click="loadImageFileAsURL()">upload</button>
+				</div>
+				<div class="form-group" ng-show="showField">
+					<button type="submit" class="btn btn-primary submitBtn" ng-click="login()">Login</button>
+
+				</div>
+
+
+				<div class="form-group" ng-show="!showField">
+					<input type="button" class="btn btn-primary submitBtn" value="Register" ng-click="register()">
+
+				</div>
+				<div class="form-group">
+					<button class="btn btn-link" id="registerlink" ng-click="showOrHide()" ng-show="showField">Register</button>
+
+				</div>
+			</form>
+
+		</div>
+	</div>
+
+	
+
+
+</div>

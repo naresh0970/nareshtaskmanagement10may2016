@@ -1,0 +1,95 @@
+<div ng-controller="currentUserTask">
+  <div class="body">
+
+        <h3> My Task</h3>
+        <table style="width:100%" ng-hide="veiwTask" >
+            <tr class="tdhead">
+                  <td class="td">title</td>
+                  <td class="td">type</td>
+                  <td class="td">status</td>
+                  <td class="td">created by</td>
+                  <td class="td">created date</td>
+                  <td class="td">Module</td>
+              </tr>
+           
+                <tbody>
+                    <tr ng-repeat="task in userTasks" ng-click="trigeredTask($index)">
+                        <td class="bdrbtm td" style="color: #103B6B;">{{task.title}}</td> 
+                        <td class="bdrbtm td">{{task.type}}</td> 
+                        <td class="bdrbtm td">{{task.status}}</td> 
+                        <td class="bdrbtm td">{{task.assigner}}</td> 
+                        <td class="bdrbtm td">{{task.startDate | date:'yyyy-MM-dd HH:mm'}}</td>
+                        <td class="bdrbtm td">{{task.module.moduleName}}</td>  
+                    </tr>
+                </tbody>
+            
+          </table>
+    
+    <div id="task" ng-show="veiwTask" style=" background: white; padding: 2px;">
+          <div id="rightDiv">
+              <div id="projectdiv">
+                  Project Name
+                  <h6 class="projectnameAndModuleName">Explore Zoho Projects!</h6>
+              </div>
+              
+              <div id="moduleDiv">
+              Module
+              <h6 class="projectnameAndModuleName">{{seletedTask.module.moduleName}}</h6>
+              </div>
+            
+            <div id="projectveiw" >
+              Assigned to 
+                <h6 style="padding-left: 30px; font-weight: bold;text-transform: capitalize;">{{seletedTask.user.name}}</h6>
+                  <a class="btn btn-link" data-toggle="collapse" data-target="#forwardtask" >Change</a>
+                  <div id="forwardtask" class="collapse" style="margin-top:10px">
+                      <input type="text" ng-model="task.asignee" placeholder="start typing" 
+    uib-typeahead="user as user.name for user in userData | filter:{name:$viewValue}" 
+    class="formcontrol" typeahead-show-hint="false" typeahead-min-length="1" ng-keyup="loadUsers($event)" style="margin-left:9px;">
+                        <button type="button"  id="taskforwadbtn">save</button>
+                  </div>
+            </div>
+        
+            </div>
+            <div class="taskname">{{seletedTask.title}}</div>
+            <div style="padding: 1px 0 24px 33px; color: #9d9d9d;"> task created by {{seletedTask.assigner}} on {{seletedTask.startDate | date:'yyyy-MM-dd HH:mm'}}</div>
+            
+          
+            
+            <div id="taskinfo">
+                <table>
+                    <tr>
+                      <td class="taskheading active" ng-click="value='comments'">comments</td>  
+                      <td class="taskheading" ng-click="value='description'">Description</td>  
+                      <td class="taskheading" ng-click="value='documents'">Documents</td>
+                      <td class="taskheading">History</td>
+                      <td class="taskheading"></td>     
+                      <td class="taskheading"></td>          
+                    </tr>
+                </table>
+            </div>
+            
+            <div ng-switch="value">
+              <div id="comments" ng-repeat="comment in seletedTask.comment" ng-switch-when="comments">
+                  <div id="comments assigner" style="padding: 28px 7px 0 22px; text-transform: capitalize;">{{comment.user}}</div>
+                  <div id="commentbody">{{comment.commentText}}</div>
+              </div>
+            
+                <div style="padding: 28px 7px 0 22px;" id="description" ng-switch-when="description">
+                  {{seletedTask.description}}
+                </div>
+              
+              <div id="document" style="padding: 28px 7px 0 22px;" ng-switch-when="documents">
+                documents
+              
+              </div>
+              <div ng-switch-default>
+            <div class="comments" ng-repeat="comment in seletedTask.comment">
+                            <div class="comments assigner" style="padding: 28px 7px 0 22px; text-transform: capitalize;">{{comment.user}}</div>
+                            <div class="commentbody">{{comment.commentText}}</div>
+                        </div>
+ 
+         </div>
+           </div>   
+      </div>
+  </div>
+</div>

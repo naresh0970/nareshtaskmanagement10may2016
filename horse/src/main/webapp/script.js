@@ -14,8 +14,16 @@ app.config(['$routeProvider', function($routeProvider) {
 }]);
 
 app.controller('ctrl',function($scope){ 
-	 $scope.$on("passModelData",function(event,data){
+	
+	$scope.$on("passModelData",function(event,data){
 		 $scope.form=data;
 		 
+	 })
+	
+	 $scope.$on('promiseHandler',function(event,data){
+		data.success(function(response){
+			debugger
+			console.log(response)
+		})
 	 })
 })
